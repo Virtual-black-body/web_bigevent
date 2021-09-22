@@ -13,7 +13,6 @@ function getUserInfo() {
             if(res.status !== 0) {
                 return layui.layer.msg('获取用户信息失败！')
             }
-
             renderAvatar(res.data)
         },
         
@@ -21,7 +20,7 @@ function getUserInfo() {
 
     function renderAvatar(user) {
         var name = user.nickname || user.username
-        $('welcome').html('欢迎&nbsp;&nbsp;' + name)
+        $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
         if(user.user_pic !== null){
             $('.layui-nav-img').show()
             $('.text-avatar').hide()
