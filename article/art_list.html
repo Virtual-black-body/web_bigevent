@@ -13,16 +13,16 @@
         <div class="layui-card-header">文章列表</div>
         <div class="layui-card-body">
           <!-- 筛选条件 -->
-          <form class="layui-form" action="">
+          <form class="layui-form" id="form-search">
             <div class="layui-form-item layui-inline">
                 <select name="cate_id" id="cate_id">
                 </select>
             </div>
             <div class="layui-form-item layui-inline">
-                <select name="state" lay-verify="required">
+                <select name="state">
                     <option value="">所以状态</option>
-                    <option value="0">已发布</option>
-                    <option value="1">草稿</option>
+                    <option value="已发布">已发布</option>
+                    <option value="草稿">草稿</option>
                 </select>
             </div>
             <div class="layui-form-item layui-inline">
@@ -52,6 +52,7 @@
             </tbody>
           </table>
           <!-- 分页控件 -->
+          <div id="pageBox"></div>
         </div>
       </div>
 
@@ -63,7 +64,7 @@
             <td>{{$value.pub_date}}</td>
             <td>{{$value.state}}</td>
             <td><button type="button" class="layui-btn layui-btn layui-btn-xs" id="btn-edit" data-id="{{$value.Id}}">编辑</button>
-                <button type="button" class="layui-btn layui-btn-danger layui-btn-xs" data-id="{{$value.Id}}" id="btn-delete">删除</button></td>
+                <button type="button" class="layui-btn layui-btn-danger layui-btn-xs btn-delete" data-id="{{$value.Id}}" id="btn-delete">删除</button></td>
         </tr>
         {{/each}}
      </script>
@@ -71,12 +72,14 @@
      <script type="text/html" id="tpl-cate">
         <option value="">所有分类</option>
         {{each data}}
-        <option value="010">{{$value.name}}</option>
+        <option value="{{$value.Id}}">{{$value.name}}</option>
         {{/each}}
      </script>
 
     <script src="/assets/lib/layui/layui.all.js"></script>
     <script src="/assets/lib/jquery.js"></script>
+    <script src="/assets/lib/cropper/Cropper.js"></script>
+    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
     <script src="/assets/js/baseAPI.js"></script>
     <script src="/assets/lib/template-web.js"></script>
     <script src="/assets/js/article/art_list.js"></script>
